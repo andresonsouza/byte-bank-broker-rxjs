@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  // api: 'http://localhost:3000',
-  api: 'http://10.0.0.105:3000',
+  api: 'http://localhost:3000',
   imagesPath: 'assets',
   name: 'Byte Bank Broker',
 };
