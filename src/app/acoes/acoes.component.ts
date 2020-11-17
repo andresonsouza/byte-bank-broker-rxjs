@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { merge } from 'rxjs';
-import { filter, tap } from 'rxjs/operators';
+import { debounceTime, filter, tap } from 'rxjs/operators';
 import { switchMap } from 'rxjs/operators';
 import { AcoesService } from './acoes.service';
+
+const ESPERA_DIGITACAO = 300;
 
 @Component({
   selector: 'app-acoes',
@@ -21,6 +23,7 @@ export class AcoesComponent {
 
   filtroPeloInput$ = this.acoesInput.valueChanges
     .pipe(
+      debounceTime(ESPERA_DIGITACAO),
       tap(() => console.log('fluxo do filtro')),
       tap(console.log),
       filter(
